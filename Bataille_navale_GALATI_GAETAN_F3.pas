@@ -26,10 +26,6 @@ type//Flotte de joueur
 		pv : integer;
 end;
 
-CONST
-	MAXBat : integer = 3;
-	MAXFlo : integer = 5;
-
 VAR
 	casesX : cell;//Gestion de la position.
 	casesY : cell;//Gestion de la position.
