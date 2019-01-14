@@ -1,7 +1,8 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAILLE 5//Taille du carré
+#define TAILLE 5//Taille du carrÃ©
 #define X_INITIAL 3//Postion initial de X
 #define Y_INITIAL 2//Postion initial de Y
 
@@ -10,7 +11,7 @@ typedef struct tJeton
     int nX;
     int nY;
 
-}tJeton;//Structure tJeton, composer des coordonées en X et en Y de Jeton
+}tJeton;//Structure tJeton, composer des coordonÃ©es en X et en Y de Jeton
 
 typedef enum Bool {true=1, false=0}Bool;//enum qui sert de Boolean
 
@@ -25,11 +26,11 @@ Bool CaseIsVoid(int nTab[TAILLE][TAILLE], tJeton jeton);
 //**********************************************************
 //Description : Le main.
 //
-//Entrées : Aucune.
+//EntrÃ©es : Aucune.
 //
-//Sorties :	Chaque étapes du caré magique.
+//Sorties :	Chaque Ã©tapes du carÃ© magique.
 //
-//Note : L’utilisateur n’entre aucune entrée durant tout le programme.
+//Note : Lâ€™utilisateur nâ€™entre aucune entrÃ©e durant tout le programme.
 //
 //**********************************************************
 int main()
@@ -38,10 +39,10 @@ int main()
     int nTab[TAILLE][TAILLE];
     tJeton Jeton={X_INITIAL, Y_INITIAL};
     InitTab(nTab);
-
-    for (int nCpt = 1; nCpt < TAILLE*TAILLE+1; nCpt++)//Boucle "principal" du programme.
+    int nCpt = 1;
+    for (nCpt; nCpt < TAILLE*TAILLE+1; nCpt++)//Boucle "principal" du programme.
     {
-        Moving(nTab, &Jeton, nCpt);//Déplacement du "Jeton"
+        Moving(nTab, &Jeton, nCpt);//DÃ©placement du "Jeton"
     }
 
     Display(nTab);//Affichage
@@ -53,18 +54,20 @@ int main()
 //**********************************************************
 //Description : Initialisation du Tableau a 0 en X et en Y
 //
-//Entrées : nTab.
+//EntrÃ©es : nTab.
 //
 //Sorties :	le tableau nTab initialiser a 0
 //
-//Note : i et j représente X et Y
+//Note : i et j reprÃ©sente X et Y
 //
 //**********************************************************
 void InitTab(int nTab[TAILLE][TAILLE])
 {
-    for (int i = 0; i < TAILLE; i++)
+    int i = 0;
+    for (i; i < TAILLE; i++)
     {
-        for (int j = 0; j < TAILLE; j++)
+        int j =0;
+        for (j ; j < TAILLE; j++)
         {
             nTab[i][j] = 0;//Initialisation a 0
         }
@@ -73,13 +76,13 @@ void InitTab(int nTab[TAILLE][TAILLE])
 
 
 //**********************************************************
-//Description : "Warp" permet de faire un caré "sphérique" quand le jeton sortira des limites il sera remit de l'autre côté
+//Description : "Warp" permet de faire un carÃ© "sphÃ©rique" quand le jeton sortira des limites il sera remit de l'autre cÃ´tÃ©
 //
-//Entrées : le tableau nTab, et le jeton (pointeur)
+//EntrÃ©es : le tableau nTab, et le jeton (pointeur)
 //
 //Sorties :	Nouvelle valeurs pour jeton->nX OU jeton->nY
 //
-//Note : Chaque if représente un des "côtés" du caré magique, Droite, Gauche, Bas, Haut
+//Note : Chaque if reprÃ©sente un des "cÃ´tÃ©s" du carÃ© magique, Droite, Gauche, Bas, Haut
 //
 //**********************************************************
 void Warp(int nTab[TAILLE][TAILLE], tJeton *jeton)
@@ -105,11 +108,11 @@ void Warp(int nTab[TAILLE][TAILLE], tJeton *jeton)
 
 
 //**********************************************************
-//Description : Vérification de la valeur de la case, si elle vaut 0 elle est vide, sinon elle est remplie
+//Description : VÃ©rification de la valeur de la case, si elle vaut 0 elle est vide, sinon elle est remplie
 //
-//Entrées : le tableau nTab, et le jeton
+//EntrÃ©es : le tableau nTab, et le jeton
 //
-//Sorties :	true ou false (enumération Bool)
+//Sorties :	true ou false (enumÃ©ration Bool)
 //
 //Note : X
 //
@@ -130,7 +133,7 @@ Bool CaseIsVoid (int nTab[TAILLE][TAILLE], tJeton jeton)
 //**********************************************************
 //Description : Simple procedure qui sert a affecter une valeur a la case
 //
-//Entrées : le tableau nTab, le jeton et un entier.
+//EntrÃ©es : le tableau nTab, le jeton et un entier.
 //
 //Sorties :	Aucune
 //
@@ -144,9 +147,9 @@ void Place(int nTab[TAILLE][TAILLE], tJeton jeton, int nCpt)
 
 
 //**********************************************************
-//Description :  procedure qui permet le déplacement du jeton sur le tablau.
+//Description :  procedure qui permet le dÃ©placement du jeton sur le tablau.
 //
-//Entrées : le tableau nTab, le jeton (pointeur) et un entier.
+//EntrÃ©es : le tableau nTab, le jeton (pointeur) et un entier.
 //
 //Sorties :	Aucune
 //
@@ -162,7 +165,7 @@ void Moving(int nTab[TAILLE][TAILLE], tJeton *jeton, int nCpt)
 
     jeton->nX++;//position nX +
     jeton->nY--;//position nY -
-    Warp(nTab, jeton);//Lacement de Warp (vérification de si le jeton sort des limites de la map)
+    Warp(nTab, jeton);//Lacement de Warp (vÃ©rification de si le jeton sort des limites de la map)
     Display(nTab);//Lancement Display de Affichage du tableau
     printf("\n");//Saut de ligne
 
@@ -170,15 +173,15 @@ void Moving(int nTab[TAILLE][TAILLE], tJeton *jeton, int nCpt)
     {
         jeton->nX--;
         Warp(nTab, jeton);
-        jeton->nX--;
+        jeton->nY--;
         Warp(nTab, jeton);
     }
 }
 
 //**********************************************************
-//Description :  Procédure qui s'occupe de l'affichage du carré magique
+//Description :  ProcÃ©dure qui s'occupe de l'affichage du carrÃ© magique
 //
-//Entrées : le tableau nTab.
+//EntrÃ©es : le tableau nTab.
 //
 //Sorties :	Affichage
 //
@@ -187,14 +190,14 @@ void Moving(int nTab[TAILLE][TAILLE], tJeton *jeton, int nCpt)
 //**********************************************************
 void Display(int nTab[TAILLE][TAILLE])
 {
-    for (int y = 0; y < TAILLE; y++)
+    int y = 0;
+    for (y; y < TAILLE; y++)
     {
-        for (int x = 0; x < TAILLE; x++)
+        int x=0;
+        for (x; x < TAILLE; x++)
         {
             printf("%2d ", nTab[x][y]);//Afichage du tableau en X et Y
         }
         printf("\n");//Saut de ligne
     }
 }
-
-
